@@ -1,0 +1,23 @@
+-----Static analysis-----
+man rabin2
+strings ./target | grep secret
+rafind2 -s printf
+-----Some tips-----
+pf.elf_header @ elf_header
+V -> goto visual mode
+VV -> graph view
+e stack.size = 256
+. -> goback to current instruction
+dr -> print all register values
+----GDB----
+gef, help command
+elf-info, checksec
+Ctrl+L: clear screen
+vmmap, vmmap stack
+xinfo $pc
+tel $esp -l 8
+skel remote=chall.pwnable.tw:10000
+
+----useful commands----
+ls -la: (drwxr-x--  4 root col 4096)
+
