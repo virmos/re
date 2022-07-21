@@ -1,14 +1,27 @@
------Static analysis-----
+-----Radare2-----
 man rabin2
 strings ./target | grep secret
 rafind2 -s printf
------Some tips-----
+pdda(c output) vs pdf
+
 pf.elf_header @ elf_header
 V -> goto visual mode
 VV -> graph view
+space: change view
 e stack.size = 256
 . -> goback to current instruction
 dr -> print all register values
+
+/: highlight in Visual mode
+\: go to bytecode
+afvn i var_14h: rename variable
+dr eax = 0xA: editing registers
+x/8x @0x80483d0 
+s main
+
+----IDA----
+
+
 ----GDB----
 gef, help command
 elf-info, checksec
@@ -17,7 +30,29 @@ vmmap, vmmap stack
 xinfo $pc
 tel $esp -l 8
 skel remote=chall.pwnable.tw:10000
+info functions
+finish: get out of functions
+ltrace, strace
 
 ----useful commands----
 ls -la: (drwxr-x--  4 root col 4096)
+ln -sf /etc/leviathan_pass/leviathan3 /tmp/leviathan_link
 
+
+----answer for overthewire----
+/etc/leviathan_pass
+
+scp -P 2223 leviathan2@leviathan.labs.overthewire.org:printfile ~/re
+
+ssh -p 2223 leviathan2@leviathan.labs.overthewire.org
+
+A. Leviathan
+2. ougahZi8Ta
+3. Ahdiemoo1j
+4. vuH0coox6m
+5. Tith4cokei
+6. UgaoFee4li
+7. ahy7MaeBo9
+
+B. Krypton
+ 
